@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="640" height="640" style="border:1px solid #c3c3c3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+ctx.fillStyle = "#FF0000";
+
+
+for (var y=0;y<16;y++) {
+for (var x=0;x<16;x++) {
+
+ctx.fillRect(x*40,y*40,39, 39);
+
+}
+}
+
+var the_fucking_button=0;
+
+c.oncontextmenu = function(e) {
+e.stopPropagation();
+e.preventDefault();
+}
+
+c.onmousemove = function (e) {
+e.stopPropagation();
+e.preventDefault();
+if (the_fucking_button) {
+this.onmousedown(e);
+ }
+}
+c.onmouseup = function(e) {
+e.stopPropagation();
+e.preventDefault();
+the_fucking_button=false;
+}
+
+c.onmousedown = function (e) {
+e.stopPropagation();
+e.preventDefault();
+
+//console.log(e);
+var ry = Math.floor(e.offsetY / 40);
+var rx = Math.floor(e.offsetX / 40);
+ctx.fillStyle = "#00FF00";
+
+ctx.fillRect(rx*40,ry*40,39, 39);
+the_fucking_button=true;
+
+}
+
+
+</script>
+
+</body>
+</html>
+
